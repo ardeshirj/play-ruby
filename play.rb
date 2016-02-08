@@ -16,6 +16,10 @@ module PlayModule
     seq.inject(0) { |a, e| e.even? ? a + e : a }
   end
 
+  def self.fact_recursive(n)
+    n == 0 ? 1 : n * fact_recursive(n - 1)
+  end
+
   def self.pali_recursive(word)
     if word.length == 1 || word.length == 0
       true
