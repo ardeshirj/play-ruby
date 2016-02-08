@@ -41,6 +41,14 @@ module PlayModule
       bottels(n - 1)
     end
   end
+
+  def self.fib_value_at(n)
+    if n == 0 || n == 1
+      n
+    else
+      fib_value_at(n - 1) + fib_value_at(n - 2)
+    end
+  end
 end
 
 # RubyMonk
