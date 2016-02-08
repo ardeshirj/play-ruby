@@ -15,6 +15,19 @@ module PlayModule
     p seq
     seq.inject(0) { |a, e| e.even? ? a + e : a }
   end
+
+  def self.pali_recursive(word)
+    if word.length == 1 || word.length == 0
+      true
+    else
+      if word[0].downcase == word[-1].downcase
+        p word[1..-2]
+        pali_recursive(word[1..-2].gsub(/\s+/, ''))
+      else
+        false
+      end
+    end
+  end
 end
 
 # RubyMonk
