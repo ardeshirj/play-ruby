@@ -61,6 +61,14 @@ def self.array_flatten(array, result = [])
   result
 end
 
+def quicksort(array, low, high)
+  return if low > high
+  partition = qs_partition(array, low, high)
+  quicksort(array, low, partition - 1)
+  quicksort(array, partition + 1, high)
+  array
+end
+
 # rubocop:disable ParallelAssignment
 def qs_partition(array, low, high)
   pivot = array[high]
@@ -88,12 +96,28 @@ def qs_partition(array, low, high)
 end
 # rubocop:enable ParallelAssignment
 
-def quicksort(array, low, high)
-  return if low > high
-  partition = qs_partition(array, low, high)
-  quicksort(array, low, partition - 1)
-  quicksort(array, partition + 1, high)
-  array
+def merge_sort(array)
+  return array if array.size <= 1
+  left = merge_sort(array[0...(array.size / 2)])
+  right = merge_sort(array[(array.size / 2)...array.size])
+  # puts "left: #{left}"
+  # puts "right: #{right}"
+  result = merge(left, right)
+  # puts "result: #{result}"
+  # puts
+  result
+end
+
+def merge(left, right)
+  merged = []
+  while left.size > 0 && right.size > 0
+    if left[0] <= right[0]
+      merged << left.shift
+    else
+      merged << right.shift
+    end
+  end
+  merged.concat(left).concat(right)
 end
 
 def include_dup?(string)
