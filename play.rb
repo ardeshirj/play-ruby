@@ -61,6 +61,45 @@ def self.array_flatten(array, result = [])
   result
 end
 
+# rubocop:disable ParallelAssignment
+def qs_partition(array, low, high)
+  pivot = array[high]
+  i = low
+
+  (low..(high - 1)).each do |j|
+    # puts "array[#{i}]: #{array[i]}, array[#{j}]: #{array[j]}, pivot: #{pivot}"
+
+    # if array[j] <= pivot
+    next if array[j] > pivot
+
+    # puts "#{array}"
+    array[i], array[j] = array[j], array[i]
+    # puts "#{array}"
+
+    i += 1
+  end
+
+  # puts "array[i]: #{array[i]}, array[high]: #{array[high]}, pivot: #{pivot}"
+  # puts "#{array}"
+  array[i], array[high] = array[high], array[i]
+  # puts "#{array}"
+
+  i
+end
+# rubocop:enable ParallelAssignment
+
+def quicksort(array, low, high)
+  return if low > high
+  partition = qs_partition(array, low, high)
+  quicksort(array, low, partition - 1)
+  quicksort(array, partition + 1, high)
+  array
+end
+
+array = [4, 6, 3, 2, 1]
+p array
+p quicksort(array, 0, array.size - 1)
+
 # RubyMonk
 module RubyMonk
   def self.random_select(array, n)
