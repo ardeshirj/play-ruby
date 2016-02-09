@@ -100,6 +100,10 @@ def include_dup?(string)
   string.size == string.split('').uniq.size
 end
 
+def remove_dump(array)
+  array.delete_if { |e| array.count(e) > 1 }
+end
+
 # RubyMonk
 module RubyMonk
   def self.random_select(array, n)
