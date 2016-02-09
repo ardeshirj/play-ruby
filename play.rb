@@ -96,9 +96,9 @@ def quicksort(array, low, high)
   array
 end
 
-array = [4, 6, 3, 2, 1]
-p array
-p quicksort(array, 0, array.size - 1)
+def include_dup?(string)
+  string.size == string.split('').uniq.size
+end
 
 # RubyMonk
 module RubyMonk
