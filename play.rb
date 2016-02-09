@@ -1,61 +1,60 @@
 require 'awesome_print'
 
 # Play
-module PlayModule
-  def self.fib_seq(k)
-    fib = [0, 1]
-    k.times do
-      fib << fib[fib.length - 2] + fib[fib.length - 1]
-    end
-    fib
+def self.fib_seq(k)
+  fib = [0, 1]
+  k.times do
+    fib << fib[fib.length - 2] + fib[fib.length - 1]
   end
+  fib
+end
 
-  def self.fib_even_sums(k)
-    seq = fib_seq k
-    seq.inject(0) { |a, e| e.even? ? a + e : a }
-  end
+def self.fib_even_sums(k)
+  seq = fib_seq k
+  seq.inject(0) { |a, e| e.even? ? a + e : a }
+end
 
-  def self.fact_recursive(n)
-    n == 0 ? 1 : n * fact_recursive(n - 1)
-  end
+def self.fact_recursive(n)
+  n == 0 ? 1 : n * fact_recursive(n - 1)
+end
 
-  def self.pali_recursive(word)
-    if word.length == 1 || word.length == 0
-      true
+def self.pali_recursive(word)
+  if word.length == 1 || word.length == 0
+    true
+  else
+    if word[0].downcase == word[-1].downcase
+      p word[1..-2]
+      pali_recursive(word[1..-2].gsub(/\s+/, ''))
     else
-      if word[0].downcase == word[-1].downcase
-        p word[1..-2]
-        pali_recursive(word[1..-2].gsub(/\s+/, ''))
-      else
-        false
-      end
+      false
     end
-  end
-
-  def self.bottels(n)
-    if n == 0
-      puts 'no more bottles of beer on the wall'
-    else
-      puts "#{n} bottles of beer on the wall"
-      bottels(n - 1)
-    end
-  end
-
-  def self.fib_value_at(n)
-    (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
-  end
-
-  def self.array_flatten(array, result = [])
-    array.each do |e|
-      if e.is_a? Array
-        array_flatten(e, result)
-      else
-        result << e
-      end
-    end
-    result
   end
 end
+
+def self.bottels(n)
+  if n == 0
+    puts 'no more bottles of beer on the wall'
+  else
+    puts "#{n} bottles of beer on the wall"
+    bottels(n - 1)
+  end
+end
+
+def self.fib_value_at(n)
+  (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
+end
+
+def self.array_flatten(array, result = [])
+  array.each do |e|
+    if e.is_a? Array
+      array_flatten(e, result)
+    else
+      result << e
+    end
+  end
+  result
+end
+
 
 # RubyMonk
 module RubyMonk
