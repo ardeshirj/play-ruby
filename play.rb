@@ -49,6 +49,17 @@ module PlayModule
       fib_value_at(n - 1) + fib_value_at(n - 2)
     end
   end
+
+  def self.array_flatten(array, result = [])
+    array.each do |e|
+      if e.is_a? Array
+        array_flatten(e, result)
+      else
+        result << e
+      end
+    end
+    result
+  end
 end
 
 # RubyMonk
