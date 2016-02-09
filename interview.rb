@@ -116,7 +116,21 @@ def merge(left, right)
   end
   merged.concat(left).concat(right)
 end
-p merge_sort([3, 4, 8, 9, 5, 2])
+
+def binary_search(array, n, min = 0, max = nil)
+  max = (array.size - 1) unless max
+  mid = (min + max) / 2
+
+  return nil if min > max
+
+  if n == array[mid]
+    return mid
+  elsif n > array[mid]
+    binary_search(array, n, mid + 1, max)
+  else
+    binary_search(array, n, min, mid - 1)
+  end
+end
 
 def include_dup?(string)
   string.size == string.split('').uniq.size
