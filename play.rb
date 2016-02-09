@@ -8,6 +8,17 @@ def self.fib_seq(k, fibs = [0, 1])
   fibs
 end
 
+def self.fib_seq_recursive(k, fibs = [0, 1])
+  return [0] if k == 1
+  return fibs if k == fibs.length - 1
+  fibs << fibs[-1] + fibs[-2]
+  fib_seq_recursive(k, fibs)
+end
+
+def self.fib_value_at(n)
+  (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
+end
+
 def self.fib_even_sums(k)
   seq = fib_seq k
   seq.inject(0) { |a, e| e.even? ? a + e : a }
@@ -39,10 +50,6 @@ def self.bottels(n)
   end
 end
 
-def self.fib_value_at(n)
-  (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
-end
-
 def self.array_flatten(array, result = [])
   array.each do |e|
     if e.is_a? Array
@@ -53,7 +60,6 @@ def self.array_flatten(array, result = [])
   end
   result
 end
-
 
 # RubyMonk
 module RubyMonk
