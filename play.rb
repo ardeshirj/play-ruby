@@ -1,12 +1,11 @@
 require 'awesome_print'
 
 # Play
-def self.fib_seq(k)
-  fib = [0, 1]
+def self.fib_seq(k, fibs = [0, 1])
   k.times do
-    fib << fib[fib.length - 2] + fib[fib.length - 1]
+    fibs << fibs[-1] + fibs[-2]
   end
-  fib
+  fibs
 end
 
 def self.fib_even_sums(k)
