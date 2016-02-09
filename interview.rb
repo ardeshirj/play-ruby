@@ -1,6 +1,4 @@
-require 'awesome_print'
-
-# interview
+# Interview
 def self.fib_seq(k, fibs = [0, 1])
   k.times do
     fibs << fibs[-1] + fibs[-2]
@@ -118,7 +116,7 @@ def merge(left, right)
   end
   merged.concat(left).concat(right)
 end
-# p merge_sort([3, 4, 8, 9, 5, 2])
+p merge_sort([3, 4, 8, 9, 5, 2])
 
 def include_dup?(string)
   string.size == string.split('').uniq.size
