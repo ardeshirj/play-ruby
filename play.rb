@@ -12,7 +12,6 @@ module PlayModule
 
   def self.fib_even_sums(k)
     seq = fib_seq k
-    p seq
     seq.inject(0) { |a, e| e.even? ? a + e : a }
   end
 
@@ -43,11 +42,7 @@ module PlayModule
   end
 
   def self.fib_value_at(n)
-    if n == 0 || n == 1
-      n
-    else
-      fib_value_at(n - 1) + fib_value_at(n - 2)
-    end
+    (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
   end
 
   def self.array_flatten(array, result = [])
