@@ -13,6 +13,11 @@ def self.fib_seq_recursive(k, fibs = [0, 1])
   fib_seq_recursive(k, fibs)
 end
 
+def self.fib_seq_inject(n)
+  (0..n).inject([0, 1]) { |a, _e| a << a.last(2).inject(&:+) }
+end
+p fib_seq_inject(5)
+
 def self.fib_value_at(n)
   (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
 end
