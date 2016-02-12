@@ -1,37 +1,37 @@
 # Interview
-def self.fib_seq(k, fibs = [0, 1])
+def fib_seq(k, fibs = [0, 1])
   k.times do
     fibs << fibs[-1] + fibs[-2]
   end
   fibs
 end
 
-def self.fib_seq_recursive(k, fibs = [0, 1])
+def fib_seq_recursive(k, fibs = [0, 1])
   return [0] if k == 1
   return fibs if k == fibs.length - 1
   fibs << fibs[-1] + fibs[-2]
   fib_seq_recursive(k, fibs)
 end
 
-def self.fib_seq_inject(n)
+def fib_seq_inject(n)
   (0..n).inject([0, 1]) { |a, _e| a << a.last(2).inject(&:+) }
 end
 p fib_seq_inject(5)
 
-def self.fib_value_at(n)
+def fib_value_at(n)
   (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
 end
 
-def self.fib_even_sums(k)
+def fib_even_sums(k)
   seq = fib_seq k
   seq.inject(0) { |a, e| e.even? ? a + e : a }
 end
 
-def self.fact_recursive(n)
+def fact_recursive(n)
   n == 0 ? 1 : n * fact_recursive(n - 1)
 end
 
-def self.pali_recursive(word)
+def pali_recursive(word)
   if word.length == 1 || word.length == 0
     true
   else
@@ -44,7 +44,7 @@ def self.pali_recursive(word)
   end
 end
 
-def self.bottels(n)
+def bottels(n)
   if n == 0
     puts 'no more bottles of beer on the wall'
   else
@@ -53,7 +53,7 @@ def self.bottels(n)
   end
 end
 
-def self.array_flatten(array, result = [])
+def array_flatten(array, result = [])
   array.each do |e|
     if e.is_a? Array
       array_flatten(e, result)

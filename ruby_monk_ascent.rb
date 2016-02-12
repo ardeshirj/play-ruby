@@ -1,5 +1,5 @@
 # RubyMonkAscent
-def self.included(base)
+def included(base)
   p "RubyMonk included to #{base}"
   base.extend ClassMethods
 end
@@ -11,11 +11,11 @@ module ClassMethods
   end
 end
 
-def self.add_multi_dim_array_elements(ary)
+def add_multi_dim_array_elements(ary)
   ary.map { |a, b| !b.nil? ? a + b : a } unless ary.nil?
 end
 
-def self.median(*list)
+def median(*list)
   return nil if list.size == 0
   list.sort!
   n = list.size
@@ -23,22 +23,22 @@ def self.median(*list)
   n.odd? ? list[mid] : (list[mid - 1] + list[mid]).to_f / 2
 end
 
-def self.zen(array)
+def zen(array)
   array = array.compact.flatten
   return array.size if array.index(42) == 5
 end
 
-def self.few2last(array)
+def few2last(array)
   array.slice(-2..-1).join('|')
 end
 
-def self.remove_matrix_dup(matrix)
+def remove_matrix_dup(matrix)
   matrix.delete_if do |a|
     matrix.include?([a.last, a.first]) && a.first != a.last
   end
 end
 
-def self.string_slice(*strings)
+def string_slice(*strings)
   p strings
   fail ArgumentError if strings.count > 5
   strings.map do |s|
@@ -47,18 +47,18 @@ def self.string_slice(*strings)
   end
 end
 
-def self.map_with_index(array, &block)
+def map_with_index(array, &block)
   return array.each unless block_given?
   array.each_with_index.map(&block)
 end
 
-def self.hash_keys(hash)
+def hash_keys(hash)
   keys = []
   hash.each_key { |k| keys << k }
   keys
 end
 
-def self.occurrences(str)
+def occurrences(str)
   str_array = str.scan(/\w+/)
   # items in each_with_object block are opposite of items in inject
   # block. (inject() { |a, e| } vs each_with_object { |e, a| } )
@@ -68,7 +68,7 @@ def self.occurrences(str)
   end
 end
 
-def self.location_in_hierarchy(object, method)
+def location_in_hierarchy(object, method)
   super_klass = object.class
   super_klasses = []
 
