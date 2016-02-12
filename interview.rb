@@ -16,7 +16,6 @@ end
 def fib_seq_inject(n)
   (0..n).inject([0, 1]) { |a, _e| a << a.last(2).inject(&:+) }
 end
-p fib_seq_inject(5)
 
 def fib_value_at(n)
   (0..1).include?(n) ? n : fib_value_at(n - 1) + fib_value_at(n - 2)
