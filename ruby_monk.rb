@@ -8,7 +8,7 @@ def random_select(array, n)
 end
 
 def palindrome?(sentence)
-  no_space_sen = sentence.downcase!.delete!(' ')
+  no_space_sen = sentence.downcase.gsub(/\s+/, '')
   no_space_sen == no_space_sen.reverse
 end
 
