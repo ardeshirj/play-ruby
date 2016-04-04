@@ -143,3 +143,7 @@ end
 def remove_dump(array)
   array.delete_if { |e| array.count(e) > 1 }
 end
+
+def first_alpha(input_string)
+  input_string.scan(/[[:alpha:]]+/).sort!.first
+end
